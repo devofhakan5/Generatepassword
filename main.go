@@ -10,6 +10,9 @@ var source = rand.NewSource(time.Now().UnixNano())
 const _charset = "abcdefghijklmnoABCDEFGHIJKLMNO123456789"
 
 func GeneratePassword(length int) string {
+	if length == 0 {
+		return string("Number must be greater than 0")
+	}
 
 	x := make([]byte, length)
 	for i := range x {
@@ -18,6 +21,6 @@ func GeneratePassword(length int) string {
 	return string(x)
 }
 func main() {
-	password := GeneratePassword(6)
+	password := GeneratePassword(0)
 	println(password)
 }
